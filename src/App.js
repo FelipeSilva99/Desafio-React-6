@@ -6,6 +6,19 @@ class App extends Component{
     cont:0
   }
   
+  componentDidMount() {
+    window.addEventListener("keydown", this.keydown)
+  }
+
+  keydown = (e) => {
+    if (e.key === "ArrowUp"){
+      this.positive()
+    }
+    if (e.key === "ArrowDown"){
+      this.negative()
+    }
+  }
+
   positive = () => {
     if (this.state.cont < 10){
       this.setState({
@@ -27,7 +40,7 @@ class App extends Component{
       <div className="App">
       <header className="App-header">
         <button onClick={this.positive}>+</button>
-        <p>{this.state.cont}</p>
+        <h1>{this.state.cont}</h1>
         <button onClick={this.negative}>-</button>
       </header>
       </div>
